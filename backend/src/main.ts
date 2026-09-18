@@ -38,10 +38,25 @@ async function bootstrap() {
   app.setGlobalPrefix(apiPrefix);
 
   // 3. Strict CORS Origin Configuration
-  const allowedOrigins = configService
+  const frontendUrl = configService.get<string>('FRONTEND_URL', 'https://raphamis.saaslink.tech');
+  const configuredCors = configService
     .get<string>('CORS_ALLOWED_ORIGINS', 'http://localhost:3000,http://127.0.0.1:3000')
     .split(',')
     .map((origin) => origin.trim());
+
+  const allowedOriginsSet = new Set<string>(configuredCors);
+  if (frontendUrl) {
+    allowedOriginsSet.add(frontendUrl.trim());
+    try {
+      const parsed = new URL(frontendUrl);
+      allowedOriginsSet.add(parsed.origin);
+    } catch {}
+  }
+  // Also always ensure the production domain is allowed
+  allowedOriginsSet.add('https://raphamis.saaslink.tech');
+  allowedOriginsSet.add('http://raphamis.saaslink.tech');
+
+  const allowedOrigins = Array.from(allowedOriginsSet);
 
   app.enableCors({
     origin: (origin, callback) => {

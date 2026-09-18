@@ -1,14 +1,14 @@
 <IfModule mod_rewrite.c>
 RewriteEngine On
 
-# 1. WebSocket configuration to backend
+# 1. WebSocket configuration to backend (Port 3014)
 RewriteCond %{HTTP:Upgrade} websocket [NC]
 RewriteCond %{HTTP:Connection} upgrade [NC]
-RewriteRule ^/?(.*) "ws://127.0.0.1:3001/$1" [P,L]
+RewriteRule ^/?(.*) "ws://127.0.0.1:3014/$1" [P,L]
 
-# 2. Proxy API routes to NestJS backend on port 3001
-RewriteRule ^api$ http://127.0.0.1:3001/api [P,L]
-RewriteRule ^api/(.*)$ http://127.0.0.1:3001/api/$1 [P,L]
+# 2. Proxy API routes to NestJS backend on Port 3014
+RewriteRule ^api$ http://127.0.0.1:3014/api [P,L]
+RewriteRule ^api/(.*)$ http://127.0.0.1:3014/api/$1 [P,L]
 
 # 3. Serve Frontend directly from dist directory if files exist
 RewriteCond %{DOCUMENT_ROOT}/dist/$1 -f
