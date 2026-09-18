@@ -1,0 +1,11 @@
+{
+  "name": "RaphaMIS - Admin Console",
+  "description": "Hospital & Clinic Management Information System (HMS) developed for Global Healthcare Providers. Features patient registration, EMR, Insurance Insurance M-Pesa & insurance billing Patient billing Patient billing, pharmacy stock, laboratory workflows, and an end-to-end staff portal with statutory payroll processing and tax management.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RaphaMIS - Admin Console</title>
+    <meta name="description" content="Hospital & Clinic Management Information System (HMS) developed for Global Healthcare Providers. Features patient registration, EMR, Insurance Insurance M-Pesa & insurance billing Patient billing Patient billing, pharmacy stock, laboratory workflows, and an end-to-end staff portal with statutory payroll processing and tax management." />
+    <meta property="og:title" content="RaphaMIS - Admin Console" />
+    <meta property="og:description" content="Hospital & Clinic Management Information System (HMS) developed for Global Healthcare Providers. Features patient registration, EMR, Insurance Insurance M-Pesa & insurance billing Patient billing Patient billing, pharmacy stock, laboratory workflows, and an end-to-end staff portal with statutory payroll processing and tax management." />
+    <meta name="theme-color" content="#0d9488" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="RaphaMIS" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="manifest" href="/manifest.json" />
+    <script src="https://cdn.tailwindcss.com"></script>
+     <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                DEFAULT: '#0D9488', // Teal-600
+                dark: '#0F766E',    // Teal-700
+              },
+              neutral: '#374151', // Gray-700
+            },
+          },
+        },
+      }
+    </script>
+    <style>
+      @media print {
+        aside, nav, header, button {
+          display: none !important;
+        }
+        body, #root {
+          background: white !important;
+        }
+        .printable-report {
+          box-shadow: none !important;
+          border: none !important;
+          max-height: none !important;
+          overflow: visible !important;
+          padding: 0 !important;
+        }
+      }
+    </style>
+</head>
+<body class="antialiased text-neutral bg-gray-100">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

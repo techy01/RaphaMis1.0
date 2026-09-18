@@ -1,0 +1,238 @@
+"use strict";
+var __esDecorate = (this && this.__esDecorate) || function (ctor, descriptorIn, decorators, contextIn, initializers, extraInitializers) {
+    function accept(f) { if (f !== void 0 && typeof f !== "function") throw new TypeError("Function expected"); return f; }
+    var kind = contextIn.kind, key = kind === "getter" ? "get" : kind === "setter" ? "set" : "value";
+    var target = !descriptorIn && ctor ? contextIn["static"] ? ctor : ctor.prototype : null;
+    var descriptor = descriptorIn || (target ? Object.getOwnPropertyDescriptor(target, contextIn.name) : {});
+    var _, done = false;
+    for (var i = decorators.length - 1; i >= 0; i--) {
+        var context = {};
+        for (var p in contextIn) context[p] = p === "access" ? {} : contextIn[p];
+        for (var p in contextIn.access) context.access[p] = contextIn.access[p];
+        context.addInitializer = function (f) { if (done) throw new TypeError("Cannot add initializers after decoration has completed"); extraInitializers.push(accept(f || null)); };
+        var result = (0, decorators[i])(kind === "accessor" ? { get: descriptor.get, set: descriptor.set } : descriptor[key], context);
+        if (kind === "accessor") {
+            if (result === void 0) continue;
+            if (result === null || typeof result !== "object") throw new TypeError("Object expected");
+            if (_ = accept(result.get)) descriptor.get = _;
+            if (_ = accept(result.set)) descriptor.set = _;
+            if (_ = accept(result.init)) initializers.unshift(_);
+        }
+        else if (_ = accept(result)) {
+            if (kind === "field") initializers.unshift(_);
+            else descriptor[key] = _;
+        }
+    }
+    if (target) Object.defineProperty(target, contextIn.name, descriptor);
+    done = true;
+};
+var __runInitializers = (this && this.__runInitializers) || function (thisArg, initializers, value) {
+    var useValue = arguments.length > 2;
+    for (var i = 0; i < initializers.length; i++) {
+        value = useValue ? initializers[i].call(thisArg, value) : initializers[i].call(thisArg);
+    }
+    return useValue ? value : void 0;
+};
+var __setFunctionName = (this && this.__setFunctionName) || function (f, name, prefix) {
+    if (typeof name === "symbol") name = name.description ? "[".concat(name.description, "]") : "";
+    return Object.defineProperty(f, "name", { configurable: true, value: prefix ? "".concat(prefix, " ", name) : name });
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Patient = exports.PatientStatusEnum = void 0;
+var typeorm_1 = require("typeorm");
+var tenant_entity_1 = require("../tenants/tenant.entity");
+var PatientStatusEnum;
+(function (PatientStatusEnum) {
+    PatientStatusEnum["Inpatient"] = "Inpatient";
+    PatientStatusEnum["Outpatient"] = "Outpatient";
+    PatientStatusEnum["Emergency"] = "Emergency";
+    PatientStatusEnum["Discharged"] = "Discharged";
+})(PatientStatusEnum || (exports.PatientStatusEnum = PatientStatusEnum = {}));
+var Patient = function () {
+    var _classDecorators = [(0, typeorm_1.Entity)('patients')];
+    var _classDescriptor;
+    var _classExtraInitializers = [];
+    var _classThis;
+    var _id_decorators;
+    var _id_initializers = [];
+    var _id_extraInitializers = [];
+    var _mrn_decorators;
+    var _mrn_initializers = [];
+    var _mrn_extraInitializers = [];
+    var _firstName_decorators;
+    var _firstName_initializers = [];
+    var _firstName_extraInitializers = [];
+    var _lastName_decorators;
+    var _lastName_initializers = [];
+    var _lastName_extraInitializers = [];
+    var _name_decorators;
+    var _name_initializers = [];
+    var _name_extraInitializers = [];
+    var _dateOfBirth_decorators;
+    var _dateOfBirth_initializers = [];
+    var _dateOfBirth_extraInitializers = [];
+    var _gender_decorators;
+    var _gender_initializers = [];
+    var _gender_extraInitializers = [];
+    var _bloodType_decorators;
+    var _bloodType_initializers = [];
+    var _bloodType_extraInitializers = [];
+    var _phone_decorators;
+    var _phone_initializers = [];
+    var _phone_extraInitializers = [];
+    var _email_decorators;
+    var _email_initializers = [];
+    var _email_extraInitializers = [];
+    var _address_decorators;
+    var _address_initializers = [];
+    var _address_extraInitializers = [];
+    var _status_decorators;
+    var _status_initializers = [];
+    var _status_extraInitializers = [];
+    var _primaryPhysician_decorators;
+    var _primaryPhysician_initializers = [];
+    var _primaryPhysician_extraInitializers = [];
+    var _assignedDepartment_decorators;
+    var _assignedDepartment_initializers = [];
+    var _assignedDepartment_extraInitializers = [];
+    var _roomNumber_decorators;
+    var _roomNumber_initializers = [];
+    var _roomNumber_extraInitializers = [];
+    var _insuranceProvider_decorators;
+    var _insuranceProvider_initializers = [];
+    var _insuranceProvider_extraInitializers = [];
+    var _insurancePolicyNumber_decorators;
+    var _insurancePolicyNumber_initializers = [];
+    var _insurancePolicyNumber_extraInitializers = [];
+    var _admissionDate_decorators;
+    var _admissionDate_initializers = [];
+    var _admissionDate_extraInitializers = [];
+    var _dischargeDate_decorators;
+    var _dischargeDate_initializers = [];
+    var _dischargeDate_extraInitializers = [];
+    var _vitals_decorators;
+    var _vitals_initializers = [];
+    var _vitals_extraInitializers = [];
+    var _allergies_decorators;
+    var _allergies_initializers = [];
+    var _allergies_extraInitializers = [];
+    var _chronicConditions_decorators;
+    var _chronicConditions_initializers = [];
+    var _chronicConditions_extraInitializers = [];
+    var _emergencyContact_decorators;
+    var _emergencyContact_initializers = [];
+    var _emergencyContact_extraInitializers = [];
+    var _tenantId_decorators;
+    var _tenantId_initializers = [];
+    var _tenantId_extraInitializers = [];
+    var _tenant_decorators;
+    var _tenant_initializers = [];
+    var _tenant_extraInitializers = [];
+    var _createdAt_decorators;
+    var _createdAt_initializers = [];
+    var _createdAt_extraInitializers = [];
+    var _updatedAt_decorators;
+    var _updatedAt_initializers = [];
+    var _updatedAt_extraInitializers = [];
+    var Patient = _classThis = /** @class */ (function () {
+        function Patient_1() {
+            this.id = __runInitializers(this, _id_initializers, void 0);
+            this.mrn = (__runInitializers(this, _id_extraInitializers), __runInitializers(this, _mrn_initializers, void 0));
+            this.firstName = (__runInitializers(this, _mrn_extraInitializers), __runInitializers(this, _firstName_initializers, void 0));
+            this.lastName = (__runInitializers(this, _firstName_extraInitializers), __runInitializers(this, _lastName_initializers, void 0));
+            this.name = (__runInitializers(this, _lastName_extraInitializers), __runInitializers(this, _name_initializers, void 0));
+            this.dateOfBirth = (__runInitializers(this, _name_extraInitializers), __runInitializers(this, _dateOfBirth_initializers, void 0));
+            this.gender = (__runInitializers(this, _dateOfBirth_extraInitializers), __runInitializers(this, _gender_initializers, void 0));
+            this.bloodType = (__runInitializers(this, _gender_extraInitializers), __runInitializers(this, _bloodType_initializers, void 0));
+            this.phone = (__runInitializers(this, _bloodType_extraInitializers), __runInitializers(this, _phone_initializers, void 0));
+            this.email = (__runInitializers(this, _phone_extraInitializers), __runInitializers(this, _email_initializers, void 0));
+            this.address = (__runInitializers(this, _email_extraInitializers), __runInitializers(this, _address_initializers, void 0));
+            this.status = (__runInitializers(this, _address_extraInitializers), __runInitializers(this, _status_initializers, void 0));
+            this.primaryPhysician = (__runInitializers(this, _status_extraInitializers), __runInitializers(this, _primaryPhysician_initializers, void 0));
+            this.assignedDepartment = (__runInitializers(this, _primaryPhysician_extraInitializers), __runInitializers(this, _assignedDepartment_initializers, void 0));
+            this.roomNumber = (__runInitializers(this, _assignedDepartment_extraInitializers), __runInitializers(this, _roomNumber_initializers, void 0));
+            this.insuranceProvider = (__runInitializers(this, _roomNumber_extraInitializers), __runInitializers(this, _insuranceProvider_initializers, void 0));
+            this.insurancePolicyNumber = (__runInitializers(this, _insuranceProvider_extraInitializers), __runInitializers(this, _insurancePolicyNumber_initializers, void 0));
+            this.admissionDate = (__runInitializers(this, _insurancePolicyNumber_extraInitializers), __runInitializers(this, _admissionDate_initializers, void 0));
+            this.dischargeDate = (__runInitializers(this, _admissionDate_extraInitializers), __runInitializers(this, _dischargeDate_initializers, void 0));
+            this.vitals = (__runInitializers(this, _dischargeDate_extraInitializers), __runInitializers(this, _vitals_initializers, void 0));
+            this.allergies = (__runInitializers(this, _vitals_extraInitializers), __runInitializers(this, _allergies_initializers, void 0));
+            this.chronicConditions = (__runInitializers(this, _allergies_extraInitializers), __runInitializers(this, _chronicConditions_initializers, void 0));
+            this.emergencyContact = (__runInitializers(this, _chronicConditions_extraInitializers), __runInitializers(this, _emergencyContact_initializers, void 0));
+            this.tenantId = (__runInitializers(this, _emergencyContact_extraInitializers), __runInitializers(this, _tenantId_initializers, void 0));
+            this.tenant = (__runInitializers(this, _tenantId_extraInitializers), __runInitializers(this, _tenant_initializers, void 0));
+            this.createdAt = (__runInitializers(this, _tenant_extraInitializers), __runInitializers(this, _createdAt_initializers, void 0));
+            this.updatedAt = (__runInitializers(this, _createdAt_extraInitializers), __runInitializers(this, _updatedAt_initializers, void 0));
+            __runInitializers(this, _updatedAt_extraInitializers);
+        }
+        return Patient_1;
+    }());
+    __setFunctionName(_classThis, "Patient");
+    (function () {
+        var _metadata = typeof Symbol === "function" && Symbol.metadata ? Object.create(null) : void 0;
+        _id_decorators = [(0, typeorm_1.PrimaryGeneratedColumn)('uuid')];
+        _mrn_decorators = [(0, typeorm_1.Column)({ name: 'mrn', unique: true })];
+        _firstName_decorators = [(0, typeorm_1.Column)({ name: 'first_name' })];
+        _lastName_decorators = [(0, typeorm_1.Column)({ name: 'last_name' })];
+        _name_decorators = [(0, typeorm_1.Column)({ name: 'name' })];
+        _dateOfBirth_decorators = [(0, typeorm_1.Column)({ name: 'date_of_birth' })];
+        _gender_decorators = [(0, typeorm_1.Column)({ default: 'Other' })];
+        _bloodType_decorators = [(0, typeorm_1.Column)({ name: 'blood_type', default: 'O+' })];
+        _phone_decorators = [(0, typeorm_1.Column)({ nullable: true })];
+        _email_decorators = [(0, typeorm_1.Column)({ nullable: true })];
+        _address_decorators = [(0, typeorm_1.Column)({ type: 'text', nullable: true })];
+        _status_decorators = [(0, typeorm_1.Column)({
+                type: 'enum',
+                enum: PatientStatusEnum,
+                default: PatientStatusEnum.Outpatient,
+            })];
+        _primaryPhysician_decorators = [(0, typeorm_1.Column)({ name: 'primary_physician', nullable: true })];
+        _assignedDepartment_decorators = [(0, typeorm_1.Column)({ name: 'assigned_department', default: 'General Medicine' })];
+        _roomNumber_decorators = [(0, typeorm_1.Column)({ name: 'room_number', nullable: true })];
+        _insuranceProvider_decorators = [(0, typeorm_1.Column)({ name: 'insurance_provider', nullable: true })];
+        _insurancePolicyNumber_decorators = [(0, typeorm_1.Column)({ name: 'insurance_policy_number', nullable: true })];
+        _admissionDate_decorators = [(0, typeorm_1.Column)({ name: 'admission_date', nullable: true })];
+        _dischargeDate_decorators = [(0, typeorm_1.Column)({ name: 'discharge_date', nullable: true })];
+        _vitals_decorators = [(0, typeorm_1.Column)({ type: 'json', nullable: true })];
+        _allergies_decorators = [(0, typeorm_1.Column)({ type: 'json', nullable: true })];
+        _chronicConditions_decorators = [(0, typeorm_1.Column)({ type: 'json', nullable: true })];
+        _emergencyContact_decorators = [(0, typeorm_1.Column)({ type: 'json', nullable: true })];
+        _tenantId_decorators = [(0, typeorm_1.Column)({ name: 'tenant_id', nullable: true })];
+        _tenant_decorators = [(0, typeorm_1.ManyToOne)(function () { return tenant_entity_1.Tenant; }, { onDelete: 'CASCADE', nullable: true }), (0, typeorm_1.JoinColumn)({ name: 'tenant_id' })];
+        _createdAt_decorators = [(0, typeorm_1.CreateDateColumn)({ name: 'created_at' })];
+        _updatedAt_decorators = [(0, typeorm_1.UpdateDateColumn)({ name: 'updated_at' })];
+        __esDecorate(null, null, _id_decorators, { kind: "field", name: "id", static: false, private: false, access: { has: function (obj) { return "id" in obj; }, get: function (obj) { return obj.id; }, set: function (obj, value) { obj.id = value; } }, metadata: _metadata }, _id_initializers, _id_extraInitializers);
+        __esDecorate(null, null, _mrn_decorators, { kind: "field", name: "mrn", static: false, private: false, access: { has: function (obj) { return "mrn" in obj; }, get: function (obj) { return obj.mrn; }, set: function (obj, value) { obj.mrn = value; } }, metadata: _metadata }, _mrn_initializers, _mrn_extraInitializers);
+        __esDecorate(null, null, _firstName_decorators, { kind: "field", name: "firstName", static: false, private: false, access: { has: function (obj) { return "firstName" in obj; }, get: function (obj) { return obj.firstName; }, set: function (obj, value) { obj.firstName = value; } }, metadata: _metadata }, _firstName_initializers, _firstName_extraInitializers);
+        __esDecorate(null, null, _lastName_decorators, { kind: "field", name: "lastName", static: false, private: false, access: { has: function (obj) { return "lastName" in obj; }, get: function (obj) { return obj.lastName; }, set: function (obj, value) { obj.lastName = value; } }, metadata: _metadata }, _lastName_initializers, _lastName_extraInitializers);
+        __esDecorate(null, null, _name_decorators, { kind: "field", name: "name", static: false, private: false, access: { has: function (obj) { return "name" in obj; }, get: function (obj) { return obj.name; }, set: function (obj, value) { obj.name = value; } }, metadata: _metadata }, _name_initializers, _name_extraInitializers);
+        __esDecorate(null, null, _dateOfBirth_decorators, { kind: "field", name: "dateOfBirth", static: false, private: false, access: { has: function (obj) { return "dateOfBirth" in obj; }, get: function (obj) { return obj.dateOfBirth; }, set: function (obj, value) { obj.dateOfBirth = value; } }, metadata: _metadata }, _dateOfBirth_initializers, _dateOfBirth_extraInitializers);
+        __esDecorate(null, null, _gender_decorators, { kind: "field", name: "gender", static: false, private: false, access: { has: function (obj) { return "gender" in obj; }, get: function (obj) { return obj.gender; }, set: function (obj, value) { obj.gender = value; } }, metadata: _metadata }, _gender_initializers, _gender_extraInitializers);
+        __esDecorate(null, null, _bloodType_decorators, { kind: "field", name: "bloodType", static: false, private: false, access: { has: function (obj) { return "bloodType" in obj; }, get: function (obj) { return obj.bloodType; }, set: function (obj, value) { obj.bloodType = value; } }, metadata: _metadata }, _bloodType_initializers, _bloodType_extraInitializers);
+        __esDecorate(null, null, _phone_decorators, { kind: "field", name: "phone", static: false, private: false, access: { has: function (obj) { return "phone" in obj; }, get: function (obj) { return obj.phone; }, set: function (obj, value) { obj.phone = value; } }, metadata: _metadata }, _phone_initializers, _phone_extraInitializers);
+        __esDecorate(null, null, _email_decorators, { kind: "field", name: "email", static: false, private: false, access: { has: function (obj) { return "email" in obj; }, get: function (obj) { return obj.email; }, set: function (obj, value) { obj.email = value; } }, metadata: _metadata }, _email_initializers, _email_extraInitializers);
+        __esDecorate(null, null, _address_decorators, { kind: "field", name: "address", static: false, private: false, access: { has: function (obj) { return "address" in obj; }, get: function (obj) { return obj.address; }, set: function (obj, value) { obj.address = value; } }, metadata: _metadata }, _address_initializers, _address_extraInitializers);
+        __esDecorate(null, null, _status_decorators, { kind: "field", name: "status", static: false, private: false, access: { has: function (obj) { return "status" in obj; }, get: function (obj) { return obj.status; }, set: function (obj, value) { obj.status = value; } }, metadata: _metadata }, _status_initializers, _status_extraInitializers);
+        __esDecorate(null, null, _primaryPhysician_decorators, { kind: "field", name: "primaryPhysician", static: false, private: false, access: { has: function (obj) { return "primaryPhysician" in obj; }, get: function (obj) { return obj.primaryPhysician; }, set: function (obj, value) { obj.primaryPhysician = value; } }, metadata: _metadata }, _primaryPhysician_initializers, _primaryPhysician_extraInitializers);
+        __esDecorate(null, null, _assignedDepartment_decorators, { kind: "field", name: "assignedDepartment", static: false, private: false, access: { has: function (obj) { return "assignedDepartment" in obj; }, get: function (obj) { return obj.assignedDepartment; }, set: function (obj, value) { obj.assignedDepartment = value; } }, metadata: _metadata }, _assignedDepartment_initializers, _assignedDepartment_extraInitializers);
+        __esDecorate(null, null, _roomNumber_decorators, { kind: "field", name: "roomNumber", static: false, private: false, access: { has: function (obj) { return "roomNumber" in obj; }, get: function (obj) { return obj.roomNumber; }, set: function (obj, value) { obj.roomNumber = value; } }, metadata: _metadata }, _roomNumber_initializers, _roomNumber_extraInitializers);
+        __esDecorate(null, null, _insuranceProvider_decorators, { kind: "field", name: "insuranceProvider", static: false, private: false, access: { has: function (obj) { return "insuranceProvider" in obj; }, get: function (obj) { return obj.insuranceProvider; }, set: function (obj, value) { obj.insuranceProvider = value; } }, metadata: _metadata }, _insuranceProvider_initializers, _insuranceProvider_extraInitializers);
+        __esDecorate(null, null, _insurancePolicyNumber_decorators, { kind: "field", name: "insurancePolicyNumber", static: false, private: false, access: { has: function (obj) { return "insurancePolicyNumber" in obj; }, get: function (obj) { return obj.insurancePolicyNumber; }, set: function (obj, value) { obj.insurancePolicyNumber = value; } }, metadata: _metadata }, _insurancePolicyNumber_initializers, _insurancePolicyNumber_extraInitializers);
+        __esDecorate(null, null, _admissionDate_decorators, { kind: "field", name: "admissionDate", static: false, private: false, access: { has: function (obj) { return "admissionDate" in obj; }, get: function (obj) { return obj.admissionDate; }, set: function (obj, value) { obj.admissionDate = value; } }, metadata: _metadata }, _admissionDate_initializers, _admissionDate_extraInitializers);
+        __esDecorate(null, null, _dischargeDate_decorators, { kind: "field", name: "dischargeDate", static: false, private: false, access: { has: function (obj) { return "dischargeDate" in obj; }, get: function (obj) { return obj.dischargeDate; }, set: function (obj, value) { obj.dischargeDate = value; } }, metadata: _metadata }, _dischargeDate_initializers, _dischargeDate_extraInitializers);
+        __esDecorate(null, null, _vitals_decorators, { kind: "field", name: "vitals", static: false, private: false, access: { has: function (obj) { return "vitals" in obj; }, get: function (obj) { return obj.vitals; }, set: function (obj, value) { obj.vitals = value; } }, metadata: _metadata }, _vitals_initializers, _vitals_extraInitializers);
+        __esDecorate(null, null, _allergies_decorators, { kind: "field", name: "allergies", static: false, private: false, access: { has: function (obj) { return "allergies" in obj; }, get: function (obj) { return obj.allergies; }, set: function (obj, value) { obj.allergies = value; } }, metadata: _metadata }, _allergies_initializers, _allergies_extraInitializers);
+        __esDecorate(null, null, _chronicConditions_decorators, { kind: "field", name: "chronicConditions", static: false, private: false, access: { has: function (obj) { return "chronicConditions" in obj; }, get: function (obj) { return obj.chronicConditions; }, set: function (obj, value) { obj.chronicConditions = value; } }, metadata: _metadata }, _chronicConditions_initializers, _chronicConditions_extraInitializers);
+        __esDecorate(null, null, _emergencyContact_decorators, { kind: "field", name: "emergencyContact", static: false, private: false, access: { has: function (obj) { return "emergencyContact" in obj; }, get: function (obj) { return obj.emergencyContact; }, set: function (obj, value) { obj.emergencyContact = value; } }, metadata: _metadata }, _emergencyContact_initializers, _emergencyContact_extraInitializers);
+        __esDecorate(null, null, _tenantId_decorators, { kind: "field", name: "tenantId", static: false, private: false, access: { has: function (obj) { return "tenantId" in obj; }, get: function (obj) { return obj.tenantId; }, set: function (obj, value) { obj.tenantId = value; } }, metadata: _metadata }, _tenantId_initializers, _tenantId_extraInitializers);
+        __esDecorate(null, null, _tenant_decorators, { kind: "field", name: "tenant", static: false, private: false, access: { has: function (obj) { return "tenant" in obj; }, get: function (obj) { return obj.tenant; }, set: function (obj, value) { obj.tenant = value; } }, metadata: _metadata }, _tenant_initializers, _tenant_extraInitializers);
+        __esDecorate(null, null, _createdAt_decorators, { kind: "field", name: "createdAt", static: false, private: false, access: { has: function (obj) { return "createdAt" in obj; }, get: function (obj) { return obj.createdAt; }, set: function (obj, value) { obj.createdAt = value; } }, metadata: _metadata }, _createdAt_initializers, _createdAt_extraInitializers);
+        __esDecorate(null, null, _updatedAt_decorators, { kind: "field", name: "updatedAt", static: false, private: false, access: { has: function (obj) { return "updatedAt" in obj; }, get: function (obj) { return obj.updatedAt; }, set: function (obj, value) { obj.updatedAt = value; } }, metadata: _metadata }, _updatedAt_initializers, _updatedAt_extraInitializers);
+        __esDecorate(null, _classDescriptor = { value: _classThis }, _classDecorators, { kind: "class", name: _classThis.name, metadata: _metadata }, null, _classExtraInitializers);
+        Patient = _classThis = _classDescriptor.value;
+        if (_metadata) Object.defineProperty(_classThis, Symbol.metadata, { enumerable: true, configurable: true, writable: true, value: _metadata });
+        __runInitializers(_classThis, _classExtraInitializers);
+    })();
+    return Patient = _classThis;
+}();
+exports.Patient = Patient;
