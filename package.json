@@ -7,6 +7,8 @@
     "dev": "vite --port 3000 --host 0.0.0.0",
     "build": "tsc && vite build",
     "preview": "vite preview --port 3000 --host 0.0.0.0",
+    "start": "pm2 start ecosystem.config.cjs",
+    "start:prod": "pm2 start ecosystem.config.cjs",
     "lint": "tsc --noEmit"
   },
   "dependencies": {
