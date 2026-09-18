@@ -9,6 +9,7 @@
     "preview": "vite preview --port 3000 --host 0.0.0.0",
     "start": "pm2 start ecosystem.config.cjs",
     "start:prod": "pm2 start ecosystem.config.cjs",
+    "db:setup": "node setup-database.cjs",
     "lint": "tsc --noEmit"
   },
   "dependencies": {

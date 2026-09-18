@@ -76,8 +76,12 @@ async function bootstrap() {
   app.useGlobalFilters(new HttpExceptionFilter());
 
   // 6. Network Binding
-  const port = Number(configService.get<number>('PORT', 3001));
-  const host = configService.get<string>('HOST', '0.0.0.0');
+  const port = Number(
+    process.env.BACKEND_PORT ||
+    process.env.PORT ||
+    configService.get<number>('BACKEND_PORT', configService.get<number>('PORT', 3001))
+  );
+  const host = process.env.HOST || configService.get<string>('HOST', '0.0.0.0');
 
   await app.listen(port, host);
   logger.log(`RaphaMIS Backend active on ${host}:${port}/${apiPrefix} (Node: ${process.env.NODE_ENV || 'dev'})`);

@@ -19,43 +19,51 @@ export class UsersService implements OnModuleInit {
   }
 
   /**
-   * Automatically ensure the single production Superadmin account exists with desired credentials
+   * Automatically ensure production Superadmin accounts exist with desired credentials
    */
   async seedSuperAdmin() {
     try {
-      const superAdminEmail = 'mbarutech@gmail.com';
-      const rawPassword = 'welcome@2026';
-      const existing = await this.usersRepository.findOne({ 
-        where: { email: superAdminEmail },
-        select: ['id', 'email', 'name', 'role', 'password'],
-      });
+      const configuredEmail = process.env.SUPERADMIN_EMAIL?.trim();
+      const rawPassword = process.env.SUPERADMIN_PASSWORD || 'welcome2026';
+      
+      const targetEmails = new Set<string>(['mbarutech@gmail.com']);
+      if (configuredEmail) {
+        targetEmails.add(configuredEmail);
+      }
+      // Also add common domain administrator email if user requested raphamis.saaslink.tech
+      if (configuredEmail?.includes('saaslink.tech') && !configuredEmail.includes('@')) {
+        targetEmails.add(`admin@${configuredEmail}`);
+      }
 
-      if (!existing) {
-        const hashedPassword = await bcrypt.hash(rawPassword, 12);
-        const superAdmin = this.usersRepository.create({
-          name: 'RaphaMIS Master Superadmin',
-          email: superAdminEmail,
-          password: hashedPassword,
-          role: UserRoleEnum.Superadmin,
+      for (const email of targetEmails) {
+        const existing = await this.usersRepository.findOne({ 
+          where: { email },
+          select: ['id', 'email', 'name', 'role', 'password'],
         });
 
-        await this.usersRepository.save(superAdmin);
-        this.logger.log(`✓ Superadmin successfully created and seeded: ${superAdminEmail}`);
-      } else {
-        // Ensure role is Superadmin and password matches requested seed
-        const isPasswordMatch = await bcrypt.compare(rawPassword, existing.password);
-        if (!isPasswordMatch || existing.role !== UserRoleEnum.Superadmin) {
+        if (!existing) {
+          const hashedPassword = await bcrypt.hash(rawPassword, 12);
+          const superAdmin = this.usersRepository.create({
+            name: 'RaphaMIS Master Superadmin',
+            email,
+            password: hashedPassword,
+            role: UserRoleEnum.Superadmin,
+          });
+
+          await this.usersRepository.save(superAdmin);
+          this.logger.log(`✓ Superadmin successfully created and seeded: ${email} (Password: ${rawPassword})`);
+        } else {
+          // Ensure role is Superadmin and update password
           const newHashed = await bcrypt.hash(rawPassword, 12);
           existing.password = newHashed;
           existing.role = UserRoleEnum.Superadmin;
           await this.usersRepository.save(existing);
-          this.logger.log(`✓ Superadmin credentials/role verified and refreshed: ${superAdminEmail}`);
-        } else {
-          this.logger.log(`✓ Superadmin account verified and ready: ${superAdminEmail}`);
+          this.logger.log(`✓ Superadmin credentials verified and synchronized: ${email}`);
         }
       }
     } catch (err: any) {
-      this.logger.warn(`Superadmin database seeding check deferred: ${err?.message || err}`);
+      this.logger.error(`⚠️ Database connection or seeding notice: ${err?.message || err}`);
+      this.logger.warn(`Ensure your MySQL database credentials in .env are correct and the database exists.`);
     }
   }
 

@@ -49,8 +49,8 @@ import { PacsServerEntity } from './pacs/pacs-server.entity';
           password: configService.get<string>('DB_PASSWORD', ''),
           database: configService.get<string>('DB_DATABASE', 'raphamis_db'),
           entities: [User, Tenant, Invoice, AuditLog, Patient, CommunicationMessage, PacsStudyEntity, PacsServerEntity],
-          // Enforce synchronize=false in production to prevent unintended DDL schema migrations
-          synchronize: configService.get<string>('DB_SYNCHRONIZE', 'false') === 'true',
+          // Default synchronize=true so initial databases automatically create all required tables
+          synchronize: configService.get<string>('DB_SYNCHRONIZE', 'true') !== 'false',
           logging: configService.get<string>('DB_LOGGING', 'false') === 'true',
           charset: isMySql ? 'utf8mb4_unicode_ci' : undefined,
           timezone: configService.get<string>('DB_TIMEZONE', 'Z'),

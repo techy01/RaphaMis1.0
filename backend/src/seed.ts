@@ -16,8 +16,9 @@ async function seed() {
     await usersService.seedSuperAdmin();
     logger.log('================================================================');
     logger.log('🎉 Superadmin Seeding Complete!');
-    logger.log('   Email:    mbarutech@gmail.com');
-    logger.log('   Password: welcome@2026');
+    logger.log('   Email 1:  admin@raphamis.saaslink.tech');
+    logger.log('   Email 2:  mbarutech@gmail.com');
+    logger.log('   Password: welcome2026');
     logger.log('   Role:     Superadmin (System Master)');
     logger.log('================================================================');
   } catch (error) {
